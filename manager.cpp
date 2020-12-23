@@ -5,6 +5,7 @@ void manager::init(){
     system("cls");
     FixConsoleWindow();
     remove_scrollbar();
+    ShowConsoleCursor(false);
     menu mn;
     mn.init();
 }
@@ -27,4 +28,15 @@ void remove_scrollbar()
         info.srWindow.Bottom - info.srWindow.Top + 1
     };
     SetConsoleScreenBufferSize(handle, new_size);
+}
+
+void ShowConsoleCursor(bool showFlag)
+{
+    HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    CONSOLE_CURSOR_INFO     cursorInfo;
+
+    GetConsoleCursorInfo(out, &cursorInfo);
+    cursorInfo.bVisible = showFlag; // set the cursor visibility
+    SetConsoleCursorInfo(out, &cursorInfo);
 }

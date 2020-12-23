@@ -16,5 +16,6 @@ private:
 
 void FixConsoleWindow();
 void remove_scrollbar();
+void ShowConsoleCursor(bool showFlag);
 
 #endif // manager_h
